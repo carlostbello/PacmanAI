@@ -521,8 +521,6 @@ def foodHeuristic(state, problem):
     position, foodGrid = state
     "*** YOUR CODE HERE ***"
     from util import manhattanDistance
-    if not any(foodGrid):
-        return 0
 
     food_dist = []
     for food in foodGrid.asList():
@@ -599,8 +597,10 @@ class AnyFoodSearchProblem(PositionSearchProblem):
         complete the problem definition.
         """
         x, y = state
-
         "*** YOUR CODE HERE ***"
+        if len(self.gameState.getFood()) > 0:
+            return False
+        return True
         util.raiseNotDefined()
 
 
