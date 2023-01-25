@@ -88,8 +88,8 @@ def depthFirstSearch(problem):
     print("Start's successors:", problem.getSuccessors(problem.getStartState()))
     """
     "*** YOUR CODE HERE ***"
-    visited = set()
-    visited.add(problem.getStartState()[0])
+    visited = []
+    visited.append(problem.getStartState()[0])
     commands = []
     fringes = util.Stack()
     for (location, direction, _) in problem.getSuccessors(problem.getStartState()):
@@ -99,7 +99,7 @@ def depthFirstSearch(problem):
         (fringe_pos, fringe_direction, fringe_commands) = fringes.pop()
         if fringe_pos in visited:
             continue
-        visited.add(fringe_pos)
+        visited.append(fringe_pos)
         fringe_commands_copy = fringe_commands.copy()
         fringe_commands_copy.append(fringe_direction)
         
@@ -115,8 +115,8 @@ def depthFirstSearch(problem):
 def breadthFirstSearch(problem):
     """Search the shallowest nodes in the search tree first."""
     "*** YOUR CODE HERE ***"
-    visited = set()
-    visited.add(problem.getStartState()[0])
+    visited = []
+    visited.append(problem.getStartState()[0])
     commands = []
     fringes = util.Queue()
     for (location, direction, _) in problem.getSuccessors(problem.getStartState()):
@@ -126,7 +126,7 @@ def breadthFirstSearch(problem):
         (fringe_pos, fringe_direction, commands) = fringes.pop()
         if fringe_pos in visited:
             continue
-        visited.add(fringe_pos)
+        visited.append(fringe_pos)
         cmds = commands.copy()
         cmds.append(fringe_direction)
         if problem.isGoalState(fringe_pos):
@@ -140,8 +140,8 @@ def breadthFirstSearch(problem):
 def uniformCostSearch(problem):
     """Search the node of least total cost first."""
     "*** YOUR CODE HERE ***"
-    visited = set()
-    visited.add(problem.getStartState()[0])
+    visited = []
+    visited.append(problem.getStartState()[0])
     commands = []
     fringes = util.PriorityQueue()
     for (location, direction, cost) in problem.getSuccessors(problem.getStartState()):
@@ -151,7 +151,7 @@ def uniformCostSearch(problem):
         (fringe_pos, fringe_direction, commands, fringe_cost) = fringes.pop()
         if fringe_pos in visited:
             continue
-        visited.add(fringe_pos)
+        visited.append(fringe_pos)
         cmds = commands.copy()
         cmds.append(fringe_direction)
         if problem.isGoalState(fringe_pos):
@@ -172,8 +172,8 @@ def nullHeuristic(state, problem=None):
 def aStarSearch(problem, heuristic=nullHeuristic):
     """Search the node that has the lowest combined cost and heuristic first."""
     "*** YOUR CODE HERE ***"
-    visited = set()
-    visited.add(problem.getStartState()[0])
+    visited = []
+    visited.append(problem.getStartState()[0])
     commands = []
     fringes = util.PriorityQueue()
     for (location, direction, cost) in problem.getSuccessors(problem.getStartState()):
@@ -184,7 +184,7 @@ def aStarSearch(problem, heuristic=nullHeuristic):
         (fringe_pos, fringe_direction, commands, fringe_cost) = fringes.pop()
         if fringe_pos in visited:
             continue
-        visited.add(fringe_pos)
+        visited.append(fringe_pos)
         cmds = commands.copy()
         cmds.append(fringe_direction)
         if problem.isGoalState(fringe_pos):
