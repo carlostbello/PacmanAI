@@ -417,7 +417,6 @@ def cornersHeuristic(state, problem):
             distance = manhattanDistance(pos, corners[index])
             corners_dist.append(distance)
     return max(corners_dist)
-    return 0  # Default to trivial solution
 
 
 class AStarCornersAgent(SearchAgent):
@@ -527,7 +526,7 @@ def foodHeuristic(state, problem):
 
     food_dist = []
     for food in foodGrid.asList():
-        food_dist.append(manhattanDistance(position, food))
+        food_dist.append(mazeDistance(position, food, problem.startingGameState))
     
     return (max(food_dist) if len(food_dist) > 0 else 0)
     return 0
